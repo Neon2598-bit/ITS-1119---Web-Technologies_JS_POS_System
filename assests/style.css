@@ -18,11 +18,23 @@
     right: 0;
 }
 
-#gridContainer {
-    display: grid;
+#loginFormDetails {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
 }
 
+/* #gridContainer {
+    display: grid;
+} */
 
+#inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
 
 /* From Uiverse.io by StealthWorm */ 
 .btn {
