@@ -23,6 +23,7 @@
     flex-direction: column;
     width: 500px;
     height: 500px;
+    margin-left: 500px;
 }
 
 /* #gridContainer {
@@ -34,6 +35,14 @@
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 2rem;
+}
+
+#emailInput{
+    display: inline-block;
+}
+
+#checkboxContainer {
+    display: flex;
 }
 
 /* From Uiverse.io by StealthWorm */ 
