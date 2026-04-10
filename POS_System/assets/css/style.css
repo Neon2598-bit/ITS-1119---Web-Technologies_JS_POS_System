@@ -333,3 +333,24 @@ strong {
 
 
 /* ======================================= DASHBOARD CSS STYLES ============================================*/
+
+#dashboardSection {
+    /*display: none; Hidden until login — JS will show it */
+    min-height: 100dvh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+/* ─── NAVBAR ─────────────────────────────────── */
+#dashboardNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
