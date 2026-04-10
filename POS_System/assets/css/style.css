@@ -300,3 +300,28 @@ strong {
         width: 11rem;
     }
 }
+
+/* ─── MOBILE (≤480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+    #gridContainer {
+        width: 95vw;
+        border-radius: 12px;
+    }
+    #loginFormDetails {
+        width: 100%;
+        border-radius: 12px;
+    }
+    #inputContainer {
+        gap: 1.25rem;
+    }
+    .btn {
+        width: 10rem;
+        height: 2.6rem;
+    }
+    #loginFormDetails h1 {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ======================================= DASHBOARD CSS STYLES ============================================*/
