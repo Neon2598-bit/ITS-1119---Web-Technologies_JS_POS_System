@@ -117,16 +117,61 @@
 
             <div id = "dashboardBottom">
 
-                
+                <div id="quickActions">
+                    <h2>Quick Actions ➜</h2>
+                    <div id="actionButtons">
+                        <button class="actionBtn" id="btnNewOrder">
+                            <i class="fa-solid fa-plus"></i> New Order
+                        </button>
+                        <button class="actionBtn" id="btnAddCustomer">
+                            <i class="fa-solid fa-user-plus"></i> Add Customer
+                        </button>
+                        <button class="actionBtn" id="btnAddItem">
+                            <i class="fa-solid fa-boxes-stacked"></i> Add Item
+                        </button>
+                    </div>
+                </div>
 
+
+                <div id = "recentOrders">
+                    <h2>Recent Orders</h2>
+                    <table id ="recentOrdersTable" class="table">
+                        <caption>List of users</caption>
+                        <thead>
+                        <tr>
+                            <th scope="col">#Order ID</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </main>
-
-
     </section>
 
-
+<!-- ================================ DASHBOARD HTML STRUCTURE END ========================================= -->
 
 <!-- ====================================== JS SCRIPTS =============================================== -->
     <script src="/POS_System/assets/lib/jquery-4.0.0.min.js"></script>
