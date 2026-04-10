@@ -34,26 +34,18 @@ body {
   z-index: 2;
 }
 
+#containerHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+#contentRow {
+  display: flex;
+  flex-direction: row;
+}
+
 #gridContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  justify-items: center;
-  align-items: center;
-  height: 100%;
-}
-
-#contanerHeader, #loginFormDetails, #loginFormImage {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-#contanerHeader {
-  z-index: 3;
-}
-
-#loginFormImage {
-  z-index: 1;
+  display: flex;
 }
 
 #inputContainer {
