@@ -28,7 +28,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#containerHeader {
+#contanerHeader {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,6 @@ body {
 #gridContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 90vw;
   max-width: 1000px;
@@ -57,12 +56,46 @@ body {
   margin-bottom: 2rem;
 }
 
-#emailInput {
-  display: inline-block;
+#emailInput, #passwordInput {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 30px; /* makes it pill-shaped */
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+#emailInput:focus,
+#passwordInput:focus {
+  border: 2px solid #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+  background: white;
+}
+
+#emailHolder,
+#passwordHolder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 8px 12px;
+  border-radius: 30px;
+}
+
+#emailHolder,
+#passwordHolder {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 #checkboxContainer {
   display: flex;
+}
+
+#emailHolder, #passwordHolder {
+  font-size: clamp(1.5rem, 1vw, 2.5rem);
 }
 
 
