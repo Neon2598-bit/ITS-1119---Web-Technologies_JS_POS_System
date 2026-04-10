@@ -15,11 +15,12 @@ body {
 #loginFormDetails {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 90%;
   max-width: 450px;
-  padding: 2rem;
+  height: 450px;
+  /* padding: 2rem; */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -32,6 +33,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 2rem;
 }
 
 #gridContainer {
@@ -52,14 +54,16 @@ body {
 #inputContainer {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 40px;
+  /* margin-bottom: 2rem; */
 }
 
 #emailInput, #passwordInput {
   width: 100%;
   padding: 12px 15px;
-  border-radius: 30px; /* makes it pill-shaped */
+  border-radius: 30px;
   border: 2px solid transparent;
   outline: none;
   font-size: 1rem;
@@ -77,7 +81,7 @@ body {
 #emailHolder,
 #passwordHolder {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 10px;
   background: rgba(255, 255, 255, 0.3);
   padding: 8px 12px;
@@ -96,6 +100,11 @@ body {
 
 #emailHolder, #passwordHolder {
   font-size: clamp(1.5rem, 1vw, 2.5rem);
+}
+
+#loginFormDetails h1 {
+  font-size: clamp(2rem, 3vw, 4rem);
+  padding-bottom: 1rem;
 }
 
 
