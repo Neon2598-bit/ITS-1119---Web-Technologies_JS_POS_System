@@ -441,3 +441,39 @@ body {
     min-height: 0;
 }
 
+#quickActions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+}
+
+#quickActions h2 {
+    color: #ffffff;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: 700;
+}
+
+#actionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.actionBtn {
+    padding: 0.8rem 1rem;
+    border-radius: 30px;
+    background: rgba(255, 204, 0, 0.15);
+    color: #ffcc00;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid rgb(255, 204, 0, 0.3);
+    transition: all 0.3s ease;
+    text-align: left;
+}
