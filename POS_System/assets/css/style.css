@@ -432,3 +432,12 @@ body {
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
+
+#dashboardBottom {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    flex: 1;
+    min-height: 0;
+}
+
