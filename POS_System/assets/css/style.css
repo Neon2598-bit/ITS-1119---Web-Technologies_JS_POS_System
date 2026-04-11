@@ -415,3 +415,20 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
+
+.statCard i {
+    color: #ffcc00;
+    margin-bottom: 0.3rem;
+}
+
+.statCard h2 {
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    font-weight: 700;
+    margin: 0;
+}
+
+.statCard p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
