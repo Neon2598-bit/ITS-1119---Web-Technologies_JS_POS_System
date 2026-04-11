@@ -516,3 +516,34 @@ body {
     flex: 1;
     min-height: 0;
 }
+
+#recentOrdersTable {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+#recentOrdersTable thead th {
+    color: #ffcc00;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: transparent;
+}
+
+#recentOrdersTable tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+}
+
+#recentOrdersTable tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#recentOrdersTable td,
+#recentOrdersTable th {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
