@@ -387,3 +387,26 @@ body {
     color: #ffcc00;
 }
 
+#statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.statCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    cursor: default;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
