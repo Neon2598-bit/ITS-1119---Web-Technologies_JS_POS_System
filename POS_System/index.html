@@ -7,7 +7,8 @@
     <title>POS System</title>
     <link rel="stylesheet" href="../POS_System/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
@@ -15,160 +16,280 @@
 
 <!-- ================================= LOGIN PAGE HTML STRUCTURE START ======================================== -->
 
-    <section id="loginSection" class = "active">
-        <div id="flexContainer">
-            <div id = "gridContainer">
-                <header id="containerHeader">
-                    <h1>E - Inventory</h1>
-                    <h4>Inventory Management System</h4>
-                </header>
+<section id="loginSection" class="active">
+    <div id="flexContainer">
+        <div id="gridContainer">
+            <header id="containerHeader">
+                <h1>E - Inventory</h1>
+                <h4>Inventory Management System</h4>
+            </header>
 
-                <div id="loginFormDetails">
-                    <h1>Login</h1>
+            <div id="loginFormDetails">
+                <h1>Login</h1>
 
-                    <div id="inputContainer">
+                <div id="inputContainer">
 
-                        <div id="emailHolder"><i class="fa-solid fa-circle-user fa-2xl"
-                                style="color: rgb(255, 212, 59);"></i><input type="email" id="emailInput"
-                                placeholder="Email Address"></div>
+                    <div id="emailHolder"><i class="fa-solid fa-circle-user fa-2xl"
+                                             style="color: rgb(255, 212, 59);"></i><input type="email" id="emailInput"
+                                                                                          placeholder="Email Address"></div>
 
 
-                        <div id="passwordHolder"><i class="fa-solid fa-lock fa-2xl"
-                                style="color: rgb(255, 212, 59);"></i><input type="password" id="passwordInput"
-                                placeholder="Password"></div>
+                    <div id="passwordHolder"><i class="fa-solid fa-lock fa-2xl"
+                                                style="color: rgb(255, 212, 59);"></i><input type="password" id="passwordInput"
+                                                                                             placeholder="Password"></div>
 
-                    </div>
-
-                    <p id="loginError" style="display:none; color:#ff6b6b; font-size:0.9rem; margin-top:0.5rem;"></p>
-
-                    <button class="button-78" role="button">LOG IN</button>
                 </div>
+
+                <p id="loginError" style="display:none; color:#ff6b6b; font-size:0.9rem; margin-top:0.5rem;"></p>
+
+                <button class="button-78" role="button">LOG IN</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- ================================= LOGIN PAGE HTML STRUCTURE END ========================================= -->
 
 <!-- ================================ DASHBOARD HTML STRUCTURE START ========================================= -->
 
-    <section id = "dashboardSection">
+<section id="dashboardSection">
 
-        <nav id="dashboardNav">
+    <nav id="dashboardNav">
 
-            <div id = "navBrand">
-                <div id = "dashboardLogo"></div>
+        <div id="navBrand">
+            <div id="dashboardLogo"></div>
+        </div>
+
+        <ul id="navLinks">
+            <li><a href="#" id="dashboardLink" class="navLink active" data-page="dashboard">Dashboard</a></li>
+            <li><a href="#" id="customerLink" class="navLink" data-page="customers">Customers</a></li>
+            <li><a href="#" id="itemsLink" class="navLink" data-page="products">Products</a></li>
+            <li><a href="#" id="orderLink" class="navLink" data-page="orders">Orders</a></li>
+            <li><a href="#" id="orderHistoryLink" class="navLink" data-page="history">History</a></li>
+        </ul>
+
+        <button class="button-87" id="btnLogOut" role="button">LOG OUT</button>
+
+    </nav>
+
+    <main id="dashboardMain">
+
+        <div id="welcomeBanner">
+            <h1>Welcome Back, <span id="welcomeName">Admin</span>👋</h1>
+        </div>
+
+        <div id="statsRow">
+            <div class="statCard" id="statCustomers">
+                <i class="fa-solid fa-users fa-2xl"></i>
+                <h2 id="statCustomerCount">0</h2>
+                <p>Total Customers</p>
+            </div>
+            <div class="statCard" id="statProducts">
+                <i class="fa-solid fa-box fa-2xl"></i>
+                <h2 id="statProductCount">0</h2>
+                <p>Total Products</p>
+            </div>
+            <div class="statCard" id="statOrders">
+                <i class="fa-solid fa-receipt fa-2xl"></i>
+                <h2 id="statOrderCount">0</h2>
+                <p>Orders Today</p>
+            </div>
+            <div class="statCard" id="statRevenue">
+                <i class="fa-solid fa-coins fa-2xl"></i>
+                <h2 id="statRevenueAmount">Rs. 0.00/=</h2>
+                <p>Revenue Today</p>
+            </div>
+        </div>
+
+        <div id="dashboardBottom">
+
+            <div id="quickActions">
+                <h2>Quick Actions ➜</h2>
+                <div id="actionButtons">
+                    <button class="actionBtn" id="btnNewOrder">
+                        <i class="fa-solid fa-plus"></i> New Order
+                    </button>
+                    <button class="actionBtn" id="btnAddCustomer">
+                        <i class="fa-solid fa-user-plus"></i> Add Customer
+                    </button>
+                    <button class="actionBtn" id="btnAddItem">
+                        <i class="fa-solid fa-boxes-stacked"></i> Add Item
+                    </button>
+                </div>
             </div>
 
-            <ul id = "navLinks">
-                <li><a href="#" id="dashboardLink" class = "navLink active" data-page="dashboard">Dashboard</a></li>
-                <li><a href="#" id="customerLink" class = "navLink" data-page="customers">Customers</a></li>
-                <li><a href="#" id="itemsLink" class = "navLink" data-page="products">Products</a></li>
-                <li><a href="#" id="orderLink" class = "navLink" data-page="orders">Orders</a></li>
-                <li><a href="#" id="orderHistoryLink" class = "navLink" data-page="history">History</a></li>
-            </ul>
 
-            <button class="button-87" id="btnLogOut" role="button">LOG OUT</button>
+            <div id="recentOrders">
+                <h2>Recent Orders</h2>
+                <div id="tableWrapper">
 
-        </nav>
+                    <table id="recentOrdersTable" class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#Order ID</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-        <main id = "dashboardMain">
+                </div>
 
-            <div id = "welcomeBanner">
-                <h1>Welcome Back, <span id = "welcomeName">Admin</span>👋</h1>
             </div>
-
-            <div id="statsRow">
-                <div class="statCard" id="statCustomers">
-                    <i class="fa-solid fa-users fa-2xl"></i>
-                    <h2 id="statCustomerCount">0</h2>
-                    <p>Total Customers</p>
-                </div>
-                <div class="statCard" id="statProducts">
-                    <i class="fa-solid fa-box fa-2xl"></i>
-                    <h2 id="statProductCount">0</h2>
-                    <p>Total Products</p>
-                </div>
-                <div class="statCard" id="statOrders">
-                    <i class="fa-solid fa-receipt fa-2xl"></i>
-                    <h2 id="statOrderCount">0</h2>
-                    <p>Orders Today</p>
-                </div>
-                <div class="statCard" id="statRevenue">
-                    <i class="fa-solid fa-coins fa-2xl"></i>
-                    <h2 id="statRevenueAmount">Rs. 0.00/=</h2>
-                    <p>Revenue Today</p>
-                </div>
-            </div>
-
-            <div id = "dashboardBottom">
-
-                <div id="quickActions">
-                    <h2>Quick Actions ➜</h2>
-                    <div id="actionButtons">
-                        <button class="actionBtn" id="btnNewOrder">
-                            <i class="fa-solid fa-plus"></i> New Order
-                        </button>
-                        <button class="actionBtn" id="btnAddCustomer">
-                            <i class="fa-solid fa-user-plus"></i> Add Customer
-                        </button>
-                        <button class="actionBtn" id="btnAddItem">
-                            <i class="fa-solid fa-boxes-stacked"></i> Add Item
-                        </button>
-                    </div>
-                </div>
-
-
-                <div id = "recentOrders">
-                    <h2>Recent Orders</h2>
-                    <div id = "tableWrapper">
-
-                        <table id ="recentOrdersTable" class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">#Order ID</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                </div>
-            </div>
-        </main>
-    </section>
+        </div>
+    </main>
+</section>
 
 <!-- ================================ DASHBOARD HTML STRUCTURE END ========================================= -->
 
+<!-- ================================ CUSTOMERS HTML STRUCTURE START ========================================= -->
+
+<section id="customersSection">
+
+    <nav id="dashboardNav2" class="dashboardNav">
+
+        <div class="navBrand">
+            <div class="pageLogo"></div>
+        </div>
+
+        <ul class="navLinks">
+            <li><a href="#" class="navLink" data-page="dashboard">Dashboard</a></li>
+            <li><a href="#" class="navLink active" data-page="customers">Customers</a></li>
+            <li><a href="#" class="navLink" data-page="products">Products</a></li>
+            <li><a href="#" class="navLink" data-page="orders">Orders</a></li>
+            <li><a href="#" class="navLink" data-page="history">History</a></li>
+        </ul>
+
+        <button class="button-87 btnLogOut" role="button">LOG OUT</button>
+
+    </nav>
+
+    <main id="customersMain">
+
+        <!-- LEFT — FORM PANEL -->
+        <div id="customerFormPanel">
+
+            <div id="customerFormHeader">
+                <i class="fa-solid fa-user-plus fa-xl"></i>
+                <h2>Customer Details</h2>
+            </div>
+
+            <div id="customerFormFields">
+
+                <div class="formGroup">
+                    <label for="customerName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="customerName" placeholder="e.g. Kasun Perera">
+                </div>
+
+                <div class="formGroup">
+                    <label for="customerPhone">Contact Number <span class="required">*</span></label>
+                    <input type="tel" id="customerPhone" placeholder="e.g. 070 2 234 235">
+                </div>
+
+                <div class="formGroup">
+                    <label for="customerAddress">Address</label>
+                    <textarea id="customerAddress" rows="3" placeholder="e.g. 12, Samagiwath, Kalutara"></textarea>
+                </div>
+
+                <div class="formGroup">
+                    <label for="customerID">Customer ID <span class="required">*</span></label>
+                    <input type="text" id="customerID" placeholder="Auto Generate" readonly>
+                </div>
+
+            </div>
+
+            <p id="customerError" class="formError"></p>
+
+            <div id="customerFormButtons">
+                <button class="formBtn addBtn" id="btnSaveCustomer">
+                    <i class="fa-solid fa-plus"></i> Add Customer
+                </button>
+                <button class="formBtn clearBtn" id="btnClearCustomer">
+                    <i class="fa-solid fa-rotate-left"></i> Clear
+                </button>
+                <button class="formBtn updateBtn" id="btnUpdateCustomer">
+                    <i class="fa-solid fa-pen"></i> Update
+                </button>
+                <button class="formBtn deleteBtn" id="btnDeleteCustomer">
+                    <i class="fa-solid fa-trash"></i> Delete
+                </button>
+            </div>
+
+        </div>
+
+        <!-- RIGHT — TABLE PANEL -->
+        <div id="customerTablePanel">
+
+            <div id="customerTableHeader">
+                <h2>All Customers</h2>
+                <div id="customerSearchBox">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="customerSearch" placeholder="Search customer...">
+                </div>
+            </div>
+                <div id="customerTableWrapper">
+
+                    <table id="customerTable" class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#Customer ID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="customerTableBody">
+                        <tr>
+                            <th scope="row">C-0001</th>
+                            <td>Kamal Perera</td>
+                            <td>072 2 234 235</td>
+                            <td>Panadura</td>
+                            <td>
+                                <button class="tableBtn editBtn"><i class="fa-solid fa-pen"></i></button>
+                                <button class="tableBtn delBtn"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+
+        </div>
+
+    </main>
+
+</section>
+
 <!-- ====================================== JS SCRIPTS =============================================== -->
-    <script src="/POS_System/assets/lib/jquery-4.0.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="/POS_System/assets/js/model.js"></script>
-    <script src="/POS_System/assets/js/view.js"></script>
-    <script src="/POS_System/assets/js/app.js"></script>
+<script src="/POS_System/assets/lib/jquery-4.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script src="/POS_System/assets/js/model.js"></script>
+<script src="/POS_System/assets/js/view.js"></script>
+<script src="/POS_System/assets/js/app.js"></script>
 </body>
 
 </html>
