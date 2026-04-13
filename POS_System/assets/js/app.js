@@ -36,5 +36,5 @@ $(document).ready(function () {
 
     $('#emailInput, #passwordInput').on('keydown', function (e) {
         if (e.key === 'Enter') $('.button-78').trigger('click');
-    });
+    })
 });
