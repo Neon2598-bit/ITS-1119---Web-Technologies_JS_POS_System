@@ -561,3 +561,76 @@ body {
 
 
 /* ======================================= CUSTOMERS CSS STYLES ============================================*/
+
+#customersSection {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    overflow: hidden;
+}
+
+/* ─── NAVBAR (reusing classes) ─────────────────────────────────── */
+.dashboardNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.pageLogo {
+    width: 120px;
+    height: 50px;
+    background: url("../../assets/img/logo.png") no-repeat center;
+    background-size: contain;
+}
+
+#customersMain {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    flex: 1;
+    height: calc(100dvh - 62px);
+    overflow: hidden;
+}
+
+/* ─── FORM PANEL ─────────────────────────────────── */
+#customerFormPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    overflow-y: auto;
+    align-self: start;
+}
+
+
+#customerFormHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#customerFormHeader i {
+    color: #ffcc00;
+}
+
+#customerFormHeader h2 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
