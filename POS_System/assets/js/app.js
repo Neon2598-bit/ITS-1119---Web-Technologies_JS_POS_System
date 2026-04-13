@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnLogOut').on('click', function () {
+    $('.btnLogOut').on('click', function () {
         MODEL.currentUser = null;
         VIEW.showSection('loginSection');
     });
