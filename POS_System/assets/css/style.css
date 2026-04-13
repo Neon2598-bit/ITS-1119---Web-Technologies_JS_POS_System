@@ -808,3 +808,89 @@ body {
 #customerSearch::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
+
+#customerTableWrapper {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+#customerTableWrapper::-webkit-scrollbar {
+    width: 5px;
+}
+
+#customerTableWrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#customerTableWrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 204, 0, 0.3);
+    border-radius: 10px;
+}
+
+#customerTable {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+#customerTable thead th {
+    color: #ffcc00;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+#customerTable tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+}
+
+#customerTable tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+#customerTable td,
+#customerTable th {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.88rem;
+    vertical-align: middle;
+}
+
+.tableBtn {
+    padding: 0.35rem 0.65rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 0.3rem;
+}
+
+.editBtn {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.editBtn:hover {
+    background: rgba(59, 130, 246, 0.4);
+    transform: scale(1.1);
+}
+
+.delBtn {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.delBtn:hover {
+    background: rgba(239, 68, 68, 0.4);
+    transform: scale(1.1);
+}
