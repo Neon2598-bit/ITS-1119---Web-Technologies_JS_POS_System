@@ -1,25 +1,18 @@
 const VIEW = {
 
     showSection: function (sectionID) {
+
         const $CURRENT = $('section.active');
-        const $NEXT = $('#'+sectionID);
+        const $NEXT = $('#' + sectionID);
 
         if ($CURRENT.length) {
-            $CURRENT.css('opacity', '0');
-
-            setTimeout(() => {
+            $CURRENT.fadeOut(300, function () {
                 $CURRENT.removeClass('active');
+                $NEXT.addClass('active').fadeIn(300);
+            });
 
-                $NEXT.addClass('active').css('opacity', '0');
-
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        $NEXT.css('opacity', '1');
-                    });
-                });
-            }, 400);
         } else {
-            $NEXT.addClass('active').css('opacity', '1');
+            $NEXT.addClass('active').fadeIn(300);
         }
     },
 

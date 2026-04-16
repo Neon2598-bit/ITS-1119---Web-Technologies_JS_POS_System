@@ -8,7 +8,6 @@ $(document).ready(function () {
         const ENTERED_PASSWORD = $('#passwordInput').val().trim();
 
         if (!ENTERED_EMAIL || !ENTERED_PASSWORD) {
-            // VIEW.showLoginError('Please Enter Both Email And Password');
             alert('Please Enter Both Email And Password');
             return false;
         }
@@ -27,6 +26,28 @@ $(document).ready(function () {
         } else {
             VIEW.showLoginError('Invalid Credentials, Please Try Again.');
         }
+
+    });
+
+    $('.navLink').on('click', function(e) {
+        e.preventDefault();
+
+        const PAGE = $(this).data('page');
+
+        const SECTION_MAP = {
+            'dashboard': 'dashboardSection',
+            'customers': 'customersSection',
+            'products': 'itemsSection',
+            'orders': 'ordersSection',
+            'history': 'historySection'
+        };
+
+        const SECTION_ID = SECTION_MAP[PAGE];
+
+        if (SECTION_ID) {
+            VIEW.showSection(SECTION_ID);
+        }
+
     });
 
     $('.btnLogOut').on('click', function () {

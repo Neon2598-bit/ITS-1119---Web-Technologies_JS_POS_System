@@ -4,14 +4,13 @@
   box-sizing: border-box;
 }
 
-/*section {*/
-/*    display: none;*/
-/*    opacity: 0;*/
-/*    transition: opacity 0.4s ease;*/
-/*}*/
+section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
 
 section.active {
-    display: block;
     opacity: 1;
 }
 
@@ -25,6 +24,16 @@ body {
     0%   { background-position: 0 0; }
     50%  { background-position: 100% 100%; }
     100% { background-position: 0 0; }
+}
+
+/* Only login is visible on load */
+#loginSection {
+    display: block;
+    opacity: 1;
+}
+
+#loginSection.active {
+    display: block;
 }
 
 #flexContainer {
@@ -561,10 +570,13 @@ body {
 
 
 /* ======================================= CUSTOMERS CSS STYLES ============================================*/
+#customersSection.active {
+    display: flex;
+}
 
 #customersSection {
     height: 100dvh;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     overflow: hidden;
