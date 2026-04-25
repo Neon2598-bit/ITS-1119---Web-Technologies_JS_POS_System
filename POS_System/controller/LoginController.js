@@ -10,8 +10,6 @@ const btnLogin      = document.getElementById("btnLogin");
 const loginError    = document.getElementById("loginError");
 const mainNav       = document.getElementById("mainNav");
 
-const custTable   = document.getElementById("customerTableBody");
-
 // ================================================================
 // ──── Page switcher (exported — used by all other controllers) ─────────
 // ================================================================
@@ -76,8 +74,6 @@ function handleLogout() {
     emailInput.value    = "";
     passwordInput.value = "";
 }
-
-//________________________ Clear All Tables When Log Out________________________
 
 // ================================================================
 // ────────────────────── Nav routing ─────────────────────────────
