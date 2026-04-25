@@ -209,7 +209,74 @@
      ============================================================ -->
 <section id="productsSection" class="page-section">
     <main id="productsMain">
-        <h2>Products</h2>
+
+        <!-- LEFT — FORM PANEL -->
+        <div id="productFormPanel">
+            <div id="productFormHeader">
+                <i class="fa-solid fa-box fa-xl"></i>
+                <h2>Product Details</h2>
+            </div>
+
+            <div id="productFormFields">
+                <div class="formGroup">
+                    <label for="productName">Product Name <span class="required">*</span></label>
+                    <input type="text" id="productName" placeholder="e.g. Coca Cola 500ml">
+                </div>
+                <div class="formGroup">
+                    <label for="productPrice">Unit Price (Rs.) <span class="required">*</span></label>
+                    <input type="number" id="productPrice" placeholder="e.g. 150.00" min="0" step="0.01">
+                </div>
+                <div class="formGroup">
+                    <label for="productQty">Quantity in Stock <span class="required">*</span></label>
+                    <input type="number" id="productQty" placeholder="e.g. 100" min="0">
+                </div>
+                <div class="formGroup">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" rows="3" placeholder="e.g. Chilled soft drink, 500ml bottle"></textarea>
+                </div>
+                <div class="formGroup">
+                    <label for="productID">Product ID <span class="required">*</span></label>
+                    <input type="text" id="productID" placeholder="Auto Generate" readonly>
+                </div>
+            </div>
+
+            <p id="productError" class="formError"></p>
+
+            <div id="productFormButtons">
+                <button class="formBtn addBtn"    id="btnSaveProduct">   <i class="fa-solid fa-plus"></i>         Add Product</button>
+                <button class="formBtn clearBtn"  id="btnClearProduct">  <i class="fa-solid fa-rotate-left"></i>  Clear</button>
+                <button class="formBtn updateBtn" id="btnUpdateProduct"> <i class="fa-solid fa-pen"></i>          Update</button>
+                <button class="formBtn deleteBtn" id="btnDeleteProduct"> <i class="fa-solid fa-trash"></i>        Delete</button>
+            </div>
+        </div>
+
+        <!-- RIGHT — TABLE PANEL -->
+        <div id="productTablePanel">
+            <div id="productTableHeader">
+                <h2>All Products</h2>
+                <div id="productSearchBox">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="productSearch" placeholder="Search product...">
+                </div>
+            </div>
+            <div id="productTableWrapper">
+                <table id="productTable" class="table">
+                    <thead>
+                    <tr>
+                        <th>#Product ID</th>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
+                        <th>Qty in Stock</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </main>
 </section>
 
