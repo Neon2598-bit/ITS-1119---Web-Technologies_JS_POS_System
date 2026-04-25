@@ -1,13 +1,21 @@
 import LoginModel from "../model/LoginModel.js";
 
-// ── DOM refs ──────────────────────────────────────────────────
+// ================================================================
+// ──────────────────────── DOM refs ───────────────────────────
+// ================================================================
+
 const emailInput    = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
 const btnLogin      = document.getElementById("btnLogin");
 const loginError    = document.getElementById("loginError");
 const mainNav       = document.getElementById("mainNav");
 
-// ── Page switcher (exported — used by all other controllers) ──
+const custTable   = document.getElementById("customerTableBody");
+
+// ================================================================
+// ──── Page switcher (exported — used by all other controllers) ─────────
+// ================================================================
+
 export function showPage(pageId) {
     document.querySelectorAll(".page-section").forEach(sec => {
         sec.classList.remove("active");
@@ -21,7 +29,10 @@ export function showPage(pageId) {
     });
 }
 
-// ── Login ─────────────────────────────────────────────────────
+// ================================================================
+// ─────────────────────── Login ──────────────────────────────────
+// ================================================================
+
 function handleLogin() {
     const email    = emailInput.value.trim();
     const password = passwordInput.value.trim();
@@ -31,9 +42,18 @@ function handleLogin() {
         loginError.style.display = "none";
         document.getElementById("welcomeName").textContent = result.user.name;
 
-        document.getElementById("loginSection").classList.remove("active");
-        mainNav.style.display = "flex";
-        showPage("dashboard");
+        // https://sweetalert2.github.io/#download
+        Swal.fire({
+            icon: "success",
+            title: "Welcome!",
+            text: `Hello, ${result.user.name}!`,
+            timer: 1500,           // auto-close after 1.5s
+            showConfirmButton: false
+        }).then(() => {
+            document.getElementById("loginSection").classList.remove("active");
+            mainNav.style.display = "flex";
+            showPage("dashboard");
+        });
 
     } else {
         loginError.textContent   = result.message;
@@ -45,7 +65,10 @@ function handleLogin() {
     }
 }
 
-// ── Logout ────────────────────────────────────────────────────
+// ================================================================
+// ────────────────────────── Logout ─────────────────────────────
+// ================================================================
+
 function handleLogout() {
     mainNav.style.display = "none";
     document.querySelectorAll(".page-section").forEach(sec => sec.classList.remove("active"));
@@ -54,7 +77,11 @@ function handleLogout() {
     passwordInput.value = "";
 }
 
-// ── Nav routing ───────────────────────────────────────────────
+//________________________ Clear All Tables When Log Out________________________
+
+// ================================================================
+// ────────────────────── Nav routing ─────────────────────────────
+// ================================================================
 document.querySelectorAll(".navLink").forEach(link => {
     link.addEventListener("click", e => {
         e.preventDefault();
@@ -62,18 +89,27 @@ document.querySelectorAll(".navLink").forEach(link => {
     });
 });
 
-// ── Dashboard quick-action buttons ───────────────────────────
+// ================================================================
+// ────────────── Dashboard quick-action buttons ──────────────────
+// ================================================================
+
 document.getElementById("btnNewOrder")?.addEventListener("click",    () => showPage("orders"));
 document.getElementById("btnAddCustomer")?.addEventListener("click", () => showPage("customers"));
 document.getElementById("btnAddItem")?.addEventListener("click",     () => showPage("products"));
 
-// ── Event bindings ────────────────────────────────────────────
+// ================================================================
+// ────────────────────── Event bindings ──────────────────────────
+// ================================================================
+
 btnLogin.addEventListener("click", handleLogin);
 emailInput.addEventListener("keydown",    e => { if (e.key === "Enter") handleLogin(); });
 passwordInput.addEventListener("keydown", e => { if (e.key === "Enter") handleLogin(); });
 document.querySelectorAll(".btnLogOut").forEach(btn => btn.addEventListener("click", handleLogout));
 
-// ── Shake keyframe ────────────────────────────────────────────
+// ================================================================
+// ────────────────────── Shake keyframe ──────────────────────────
+// ================================================================
+
 const shakeStyle = document.createElement("style");
 shakeStyle.textContent = `
     @keyframes shake {
