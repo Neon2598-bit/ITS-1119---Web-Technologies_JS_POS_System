@@ -11,6 +11,8 @@
     display: block;
 }
 
+#productsSection.active { display: flex; }
+
 #customersSection.active { display: flex; }
 /* ============================================================
    GLOBAL BACKGROUND
