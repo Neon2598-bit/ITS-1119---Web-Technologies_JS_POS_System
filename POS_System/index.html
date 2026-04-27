@@ -282,10 +282,156 @@
 
 <!-- ============================================================
      ORDERS SECTION
+     Paste this block to replace your existing ordersSection
      ============================================================ -->
 <section id="ordersSection" class="page-section">
     <main id="ordersMain">
-        <h2>Orders</h2>
+
+        <!-- PANEL 1: ORDER FORM -->
+        <div id="orderFormPanel">
+            <div class="orderPanelHeader">
+                <i class="fa-solid fa-clipboard-list fa-lg" style="color:#ffcc00;"></i>
+                <h2>New Order</h2>
+            </div>
+
+            <div class="orderIdBadge">
+                <span class="orderIdDot"></span>
+                <span id="orderIDDisplay">ORD-0001</span>
+            </div>
+
+            <div class="orderFormFields">
+                <div class="formGroup">
+                    <label for="orderCustomer">Customer <span class="required">*</span></label>
+                    <select id="orderCustomer">
+                        <option value="">— Select Customer —</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="orderDate">Order Date</label>
+                    <input type="date" id="orderDate">
+                </div>
+                <div class="formGroup">
+                    <label for="orderStatus">Status</label>
+                    <div class="statusSelectWrap">
+                        <span class="statusDot dot-pending" id="orderStatusDot"></span>
+                        <select id="orderStatus">
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label for="orderNote">Note</label>
+                    <input type="text" id="orderNote" placeholder="e.g. Deliver before 5pm">
+                </div>
+            </div>
+
+            <p id="orderError" class="formError"></p>
+
+            <div id="orderFormButtons">
+                <button class="formBtn addBtn"    id="btnPlaceOrder">  <i class="fa-solid fa-plus"></i>         Place Order</button>
+                <button class="formBtn clearBtn"  id="btnClearOrder">  <i class="fa-solid fa-rotate-left"></i>  Clear</button>
+                <button class="formBtn updateBtn" id="btnUpdateOrder"> <i class="fa-solid fa-pen"></i>          Update</button>
+                <button class="formBtn deleteBtn" id="btnDeleteOrder"> <i class="fa-solid fa-trash"></i>        Delete</button>
+            </div>
+        </div>
+
+        <!-- PANEL 2: PRODUCT LINE BUILDER -->
+        <div id="orderItemsPanel">
+            <div class="orderPanelHeader">
+                <i class="fa-solid fa-boxes-stacked fa-lg" style="color:#ffcc00;"></i>
+                <h2>Order Items</h2>
+            </div>
+
+            <div class="productPickerRow">
+                <div class="formGroup" style="flex:1;">
+                    <label for="pickerProduct">Product</label>
+                    <select id="pickerProduct">
+                        <option value="">— Select Product —</option>
+                    </select>
+                </div>
+                <div class="formGroup">
+                    <label for="pickerQty">Qty</label>
+                    <input type="number" id="pickerQty" class="qtyInput" value="1" min="1">
+                </div>
+            </div>
+
+            <div class="productPickerRow">
+                <div class="formGroup" style="flex:1;">
+                    <label for="pickerPrice">Unit Price (Rs.)</label>
+                    <input type="number" id="pickerPrice" placeholder="0.00" min="0" step="0.01" readonly>
+                </div>
+                <button class="addLineBtn" id="btnAddLine">
+                    <i class="fa-solid fa-plus"></i> Add
+                </button>
+            </div>
+
+            <div class="linesListHeader">
+                <span class="linesListLabel">Items (<span id="lineCount">0</span>)</span>
+                <button class="clearAllBtn" id="btnClearLines">Clear all</button>
+            </div>
+
+            <div class="linesList" id="linesList">
+                <div class="emptyLines">
+                    <i class="fa-solid fa-box-open fa-2xl" style="color:rgba(255,255,255,0.15);"></i>
+                    <span>No items added yet</span>
+                </div>
+            </div>
+
+            <div class="formGroup" style="margin-top:auto; flex-shrink:0;">
+                <label for="discountInput">Discount (%)</label>
+                <div class="discRow">
+                    <input type="number" id="discountInput" placeholder="0" min="0" max="100">
+                    <span class="discBadge" id="discBadge">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 3: SUMMARY + RECENT ORDERS TABLE -->
+        <div id="orderSummaryPanel">
+            <div class="orderPanelHeader">
+                <i class="fa-solid fa-file-invoice fa-lg" style="color:#ffcc00;"></i>
+                <h2>Order Summary</h2>
+            </div>
+
+            <div class="summaryRows">
+                <div class="summaryRow"><span class="summaryLabel">Subtotal</span><span class="summaryValue" id="sumSubtotal">Rs. 0.00</span></div>
+                <div class="summaryRow"><span class="summaryLabel">Discount</span><span class="summaryValue discountValue" id="sumDiscount">- Rs. 0.00</span></div>
+                <div class="summaryRow"><span class="summaryLabel">Items</span><span class="summaryValue" id="sumItems">0 pcs</span></div>
+            </div>
+
+            <div class="summaryTotal">
+                <span class="summaryTotalLabel">⚡ Total</span>
+                <span class="summaryTotalValue" id="sumTotal">Rs. 0.00</span>
+            </div>
+
+            <div class="ordersDivider"></div>
+
+            <div class="recentOrdersHeader">
+                <h2>Recent Orders</h2>
+                <div id="orderSearchBox">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="orderSearch" placeholder="Search order...">
+                </div>
+            </div>
+
+            <div id="orderTableWrapper">
+                <table id="orderTable" class="table">
+                    <thead>
+                    <tr>
+                        <th>#Order ID</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="orderTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
     </main>
 </section>
 

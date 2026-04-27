@@ -162,10 +162,6 @@ body {
     z-index: 0;
 }
 
-@media (min-width: 768px) {
-    .button-78 { padding: 19px 32px; }
-}
-
 .button-78:before,
 .button-78:after {
     border-radius: 80px;
@@ -781,28 +777,6 @@ body {
 .delBtn:hover { background: rgba(239, 68, 68, 0.4); transform: scale(1.1); }
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 768px) {
-    #gridContainer    { gap: 0.75rem; }
-    #loginFormDetails { width: 95%; }
-    #statsRow         { grid-template-columns: repeat(2, 1fr); }
-    #dashboardBottom  { grid-template-columns: 1fr; }
-    #customersMain    { grid-template-columns: 1fr; overflow-y: auto; }
-    #actionButtons    { width: 100%; }
-}
-
-@media (max-width: 480px) {
-    #gridContainer    { width: 95vw; border-radius: 12px; }
-    #loginFormDetails { width: 100%; border-radius: 12px; }
-    #inputContainer   { gap: 1.25rem; }
-    #loginFormDetails h1 { font-size: 1.6rem; }
-    #statsRow         { grid-template-columns: 1fr 1fr; }
-    .navLinks         { gap: 0; }
-    .navLink          { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
-}
-
-/* ============================================================
    PRODUCTS SECTION
    ============================================================ */
 #productsSection {
@@ -994,11 +968,487 @@ body {
     font-weight: 600;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    #productsMain {
-        grid-template-columns: 1fr;
-        overflow-y: auto;
-        height: auto;
-    }
+/* ============================================================
+   ORDERS SECTION
+   ============================================================ */
+
+#ordersSection {
+    height: 100dvh;
+    overflow: hidden;
 }
+
+#ordersSection.active { display: flex; }
+
+#ordersMain {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+    padding: 1.5rem 2rem;
+    height: calc(100dvh - 62px);
+    overflow: hidden;
+    width: 100%;
+}
+
+/* ── Shared panel base ── */
+#orderFormPanel,
+#orderItemsPanel,
+#orderSummaryPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.4rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* ── Panel header ── */
+.orderPanelHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.orderPanelHeader h2 {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ── Animated Order ID badge ── */
+.orderIdBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 204, 0, 0.12);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 30px;
+    padding: 0.35rem 1rem;
+    font-size: 0.85rem;
+    color: #ffcc00;
+    font-weight: 700;
+    width: fit-content;
+    flex-shrink: 0;
+}
+
+.orderIdDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffcc00;
+    animation: orderDotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes orderDotPulse {
+    0%, 100% { opacity: 1;  transform: scale(1);   }
+    50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── Form fields inside order form ── */
+.orderFormFields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Select styling  */
+.formGroup select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    outline: none;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.formGroup select option {
+    background: #1a1a2e;
+    color: #ffffff;
+}
+
+.formGroup select:focus {
+    border: 1px solid #ffcc00;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Status select with colored dot ── */
+.statusSelectWrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.statusSelectWrap select { flex: 1; }
+
+.statusDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.dot-pending   { background: #f59e0b; }
+.dot-confirmed { background: #3b82f6; }
+.dot-completed { background: #22c55e; }
+.dot-cancelled { background: #ef4444; }
+
+/* ── Order form action buttons ── */
+#orderFormButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+/* ── Product picker row ── */
+.productPickerRow {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.qtyInput { width: 75px !important; }
+
+.addLineBtn {
+    padding: 0.55rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-end;
+}
+
+.addLineBtn:hover {
+    background: rgba(34, 197, 94, 0.35);
+    transform: translateY(-2px);
+}
+
+/* ── Lines list header ── */
+.linesListHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.linesListLabel {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.clearAllBtn {
+    background: none;
+    border: none;
+    color: rgba(239, 68, 68, 0.7);
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.clearAllBtn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* ── Scrollable lines list ── */
+.linesList {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 0;
+}
+
+.linesList::-webkit-scrollbar       { width: 4px; }
+.linesList::-webkit-scrollbar-track { background: transparent; }
+.linesList::-webkit-scrollbar-thumb {
+    background: rgba(255, 204, 0, 0.3);
+    border-radius: 10px;
+}
+
+/* ── Individual line item ── */
+.lineItem {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+    animation: lineSlideIn 0.25s ease;
+}
+
+@keyframes lineSlideIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+.lineItem:hover { background: rgba(255, 255, 255, 0.09); }
+
+.lineName {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.lineQty {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+}
+
+.linePrice {
+    color: #ffcc00;
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.lineRemoveBtn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #ef4444;
+    border-radius: 6px;
+    padding: 3px 7px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lineRemoveBtn:hover { background: rgba(239, 68, 68, 0.35); }
+
+/* ── Empty state ── */
+.emptyLines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* ── Discount row ── */
+.discRow {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.discRow input { flex: 1; }
+
+.discBadge {
+    padding: 3px 12px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ── Summary rows ── */
+.summaryRows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex-shrink: 0;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.summaryRow:last-child { border: none; }
+
+.summaryLabel {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.summaryValue {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.discountValue { color: #ef4444; }
+
+/* ── Glowing total card ── */
+.summaryTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 204, 0, 0.1);
+    border: 1px solid rgba(255, 204, 0, 0.25);
+    border-radius: 12px;
+    flex-shrink: 0;
+    animation: goldGlow 3s ease-in-out infinite;
+}
+
+@keyframes goldGlow {
+    0%, 100% { box-shadow: 0 0 8px rgba(255, 204, 0, 0.2);  }
+    50%       { box-shadow: 0 0 20px rgba(255, 204, 0, 0.45); }
+}
+
+.summaryTotalLabel {
+    color: #ffcc00;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.summaryTotalValue {
+    color: #ffcc00;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* ── Divider ── */
+.ordersDivider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+/* ── Recent orders header ── */
+.recentOrdersHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.recentOrdersHeader h2 {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ── Order search box ── */
+#orderSearchBox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    padding: 0.4rem 0.9rem;
+    transition: all 0.3s ease;
+}
+
+#orderSearchBox:focus-within {
+    border-color: #ffcc00;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.25);
+}
+
+#orderSearchBox i {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+}
+
+#orderSearch {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.85rem;
+    width: 130px;
+}
+
+#orderSearch::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+/* ── Orders table wrapper ── */
+#orderTableWrapper {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+#orderTableWrapper::-webkit-scrollbar       { width: 4px; }
+#orderTableWrapper::-webkit-scrollbar-track { background: transparent; }
+#orderTableWrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 204, 0, 0.3);
+    border-radius: 10px;
+}
+
+/* ── Orders table ── */
+#orderTable {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+#orderTable thead th {
+    color: #ffcc00;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+#orderTable tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+#orderTable tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#orderTable td,
+#orderTable th {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+/* ── Status badges ── */
+.badge-pending   { background: rgba(245,158,11,0.2);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.35); }
+.badge-confirmed { background: rgba(59,130,246,0.2);  color: #3b82f6; border: 1px solid rgba(59,130,246,0.35); }
+.badge-completed { background: rgba(34,197,94,0.15);  color: #22c55e; border: 1px solid rgba(34,197,94,0.35);  }
+.badge-cancelled { background: rgba(239,68,68,0.2);   color: #ef4444; border: 1px solid rgba(239,68,68,0.4);   }
