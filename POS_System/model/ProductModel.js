@@ -28,6 +28,17 @@ class ProductModel {
             return { success: false, message: "Enter a valid quantity." };
         }
 
+        // ── Duplicate name check → merge qty ─────────────────
+        const existing = items_DB.find(
+            p => p.name.toLowerCase() === name.trim().toLowerCase()
+        );
+
+        if (existing) {
+            existing.qty += parseInt(qty);
+            return { success: true, product: existing, merged: true };
+        }
+
+        // ── New product ───────────────────────────────────────
         const product = {
             id          : ProductModel.generateID(),
             name        : name.trim(),
@@ -37,7 +48,7 @@ class ProductModel {
         };
 
         items_DB.push(product);
-        return { success: true, product };
+        return { success: true, product, merged: false };
     }
 
     // ============================================================

@@ -1,4 +1,4 @@
-import ProductModel from "../model/ProdcutModel.js";
+import ProductModel from "../model/ProductModel.js";
 
 // ============================================================
 // ─────────────────────── DOM refs ───────────────────────────
@@ -138,11 +138,16 @@ function saveProduct() {
     clearError();
     const result = ProductModel.add(nameInput.value, priceInput.value, qtyInput.value, descriptionInput.value);
     if (!result.success) { setError(result.message); return; }
+
     renderTable(ProductModel.getAll());
     clearForm();
 
-    // https://sweetalert2.github.io/#download
-    Swal.fire({ icon: "success", title: "Product Has Been Saved!", timer: 1500, showConfirmButton: false });
+    // Show different message if qty was merged into existing product
+    if (result.merged) {
+        Swal.fire({ icon: "info", title: "Stock Updated!", text: `"${result.product.name}" already exists. Qty has been added to existing stock.`, timer: 2000, showConfirmButton: false });
+    } else {
+        Swal.fire({ icon: "success", title: "Product Saved!", timer: 1500, showConfirmButton: false });
+    }
 }
 
 function updateProduct() {

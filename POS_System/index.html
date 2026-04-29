@@ -282,7 +282,6 @@
 
 <!-- ============================================================
      ORDERS SECTION
-     Paste this block to replace your existing ordersSection
      ============================================================ -->
 <section id="ordersSection" class="page-section">
     <main id="ordersMain">
@@ -333,8 +332,6 @@
             <div id="orderFormButtons">
                 <button class="formBtn addBtn"    id="btnPlaceOrder">  <i class="fa-solid fa-plus"></i>         Place Order</button>
                 <button class="formBtn clearBtn"  id="btnClearOrder">  <i class="fa-solid fa-rotate-left"></i>  Clear</button>
-                <button class="formBtn updateBtn" id="btnUpdateOrder"> <i class="fa-solid fa-pen"></i>          Update</button>
-                <button class="formBtn deleteBtn" id="btnDeleteOrder"> <i class="fa-solid fa-trash"></i>        Delete</button>
             </div>
         </div>
 
@@ -408,28 +405,6 @@
             </div>
 
             <div class="ordersDivider"></div>
-
-            <div class="recentOrdersHeader">
-                <h2>Recent Orders</h2>
-                <div id="orderSearchBox">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="orderSearch" placeholder="Search order...">
-                </div>
-            </div>
-
-            <div id="orderTableWrapper">
-                <table id="orderTable" class="table">
-                    <thead>
-                    <tr>
-                        <th>#Order ID</th>
-                        <th>Customer</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody id="orderTableBody"></tbody>
-                </table>
-            </div>
         </div>
 
     </main>
@@ -458,6 +433,7 @@
     import "./controller/DashboardController.js";
     import "./controller/CustomerController.js";
     import "./controller/ProductController.js";
+    import "./controller/OrderController.js";
 </script>
 </body>
 </html>
