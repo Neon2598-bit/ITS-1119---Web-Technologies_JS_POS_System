@@ -1452,3 +1452,295 @@ body {
 .badge-confirmed { background: rgba(59,130,246,0.2);  color: #3b82f6; border: 1px solid rgba(59,130,246,0.35); }
 .badge-completed { background: rgba(34,197,94,0.15);  color: #22c55e; border: 1px solid rgba(34,197,94,0.35);  }
 .badge-cancelled { background: rgba(239,68,68,0.2);   color: #ef4444; border: 1px solid rgba(239,68,68,0.4);   }
+
+/* ================================================================
+   HISTORY SECTION
+   ================================================================ */
+
+/* ── Layout ──────────────────────────────────────────────────── */
+#historySection {
+    background: #0f0f17;
+    min-height: 100vh;
+    padding: 2rem 2.4rem 3rem;
+    box-sizing: border-box;
+}
+
+#historyMain {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ── Page Header ─────────────────────────────────────────────── */
+#historyHeader {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+#historyTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: #ffd43b;
+}
+
+#historyTitleGroup i {
+    color: #ffd43b;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+#historyTitleGroup h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+}
+
+#historySubtitle {
+    margin: 0.15rem 0 0;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Filter Bar ──────────────────────────────────────────────── */
+#historyFilterBar {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.historyFilterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.historyFilterGroup label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.historyDateInput {
+    background: #1c1c2e;
+    border: 1.5px solid rgba(255, 212, 59, 0.25);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.88rem;
+    padding: 0.55rem 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color-scheme: dark;
+}
+
+.historyDateInput:focus {
+    border-color: #ffd43b;
+    box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.12);
+}
+
+.historyFilterSep {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+}
+
+.historyFilterBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.18s, transform 0.1s, box-shadow 0.18s;
+}
+
+/* solid gold — Apply */
+.historyFilterBtn:not(.historyFilterBtnGhost) {
+    background: #ffd43b;
+    color: #0f0f17;
+}
+.historyFilterBtn:not(.historyFilterBtnGhost):hover {
+    background: #ffe066;
+    box-shadow: 0 4px 16px rgba(255, 212, 59, 0.35);
+    transform: translateY(-1px);
+}
+.historyFilterBtn:not(.historyFilterBtnGhost):active {
+    transform: translateY(0);
+}
+
+/* ghost — Reset */
+.historyFilterBtnGhost {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+}
+.historyFilterBtnGhost:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Summary Chips ───────────────────────────────────────────── */
+#historyChips {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.historyChip {
+    background: #1c1c2e;
+    border: 1.5px solid rgba(255, 212, 59, 0.15);
+    border-radius: 12px;
+    padding: 0.85rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 130px;
+    transition: border-color 0.2s;
+}
+
+.historyChip:hover {
+    border-color: rgba(255, 212, 59, 0.4);
+}
+
+.chipVal {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.chipLabel {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* highlight the revenue chip */
+.chipRevenue {
+    border-color: rgba(255, 212, 59, 0.4);
+    background: rgba(255, 212, 59, 0.06);
+}
+.chipRevenue .chipVal {
+    color: #ffd43b;
+}
+
+/* ── Table Wrapper ───────────────────────────────────────────── */
+#historyTableWrapper {
+    background: #1c1c2e;
+    border: 1.5px solid rgba(255, 212, 59, 0.15);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* scrollable on small screens */
+#historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+/* ── Table Head ──────────────────────────────────────────────── */
+#historyTable thead tr {
+    background: rgba(255, 212, 59, 0.08);
+    border-bottom: 1.5px solid rgba(255, 212, 59, 0.2);
+}
+
+#historyTable thead th {
+    color: #ffd43b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 1rem 1.1rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* ── Table Body ──────────────────────────────────────────────── */
+#historyTable tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.15s;
+}
+
+#historyTable tbody tr:last-child {
+    border-bottom: none;
+}
+
+#historyTable tbody tr:hover {
+    background: rgba(255, 212, 59, 0.05);
+}
+
+#historyTable tbody td {
+    padding: 0.9rem 1.1rem;
+    color: black;
+    vertical-align: middle;
+}
+
+/* order-id cell  */
+#historyTable tbody td:first-child {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #ffd43b;
+    font-weight: 600;
+}
+
+/* ── Status Badges ───────────────────────────────────────────── */
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.statusBadge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.badge-pending   { background: rgba(255, 180,  0, 0.15); color: #ffb400; }
+.badge-confirmed { background: rgba( 33, 150, 243, 0.15); color: #42a5f5; }
+.badge-completed { background: rgba( 76, 175,  80, 0.15); color: #66bb6a; }
+.badge-cancelled { background: rgba(244,  67,  54, 0.15); color: #ef5350; }
+
+/* ── Empty State ─────────────────────────────────────────────── */
+#historyEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 4rem 2rem;
+    color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+#historyEmpty p {
+    margin: 0;
+    font-size: 0.9rem;
+}

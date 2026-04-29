@@ -110,24 +110,6 @@
                     </button>
                 </div>
             </div>
-
-            <div id="recentOrders">
-                <h2>Recent Orders</h2>
-                <div id="tableWrapper">
-                    <table id="recentOrdersTable" class="table">
-                        <thead>
-                        <tr>
-                            <th>#Order ID</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody id="recentOrdersBody">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
 
     </main>
@@ -415,7 +397,89 @@
      ============================================================ -->
 <section id="historySection" class="page-section">
     <main id="historyMain">
-        <h2>Order History</h2>
+
+        <!-- ── PAGE HEADER ── -->
+        <div id="historyHeader">
+            <div id="historyTitleGroup">
+                <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+                <div>
+                    <h2>Order History</h2>
+                    <p id="historySubtitle">Showing all orders</p>
+                </div>
+            </div>
+
+            <!-- ── FILTER BAR ── -->
+            <div id="historyFilterBar">
+
+                <div class="historyFilterGroup">
+                    <label for="historyDateFrom">From</label>
+                    <input type="date" id="historyDateFrom" class="historyDateInput">
+                </div>
+
+                <span class="historyFilterSep">→</span>
+
+                <div class="historyFilterGroup">
+                    <label for="historyDateTo">To</label>
+                    <input type="date" id="historyDateTo" class="historyDateInput">
+                </div>
+
+                <button class="historyFilterBtn" id="btnHistoryFilter">
+                    <i class="fa-solid fa-filter"></i> Apply
+                </button>
+
+                <button class="historyFilterBtn historyFilterBtnGhost" id="btnHistoryClear">
+                    <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+
+            </div>
+        </div>
+
+        <!-- ── SUMMARY CHIPS ── -->
+        <div id="historyChips">
+            <div class="historyChip">
+                <span class="chipVal" id="chipTotal">0</span>
+                <span class="chipLabel">Total Orders</span>
+            </div>
+            <div class="historyChip">
+                <span class="chipVal" id="chipCompleted">0</span>
+                <span class="chipLabel">Completed</span>
+            </div>
+            <div class="historyChip">
+                <span class="chipVal" id="chipPending">0</span>
+                <span class="chipLabel">Pending</span>
+            </div>
+            <div class="historyChip chipRevenue">
+                <span class="chipVal" id="chipRevenue">Rs. 0.00</span>
+                <span class="chipLabel">Total Revenue</span>
+            </div>
+        </div>
+
+        <!-- ── TABLE WRAPPER ── -->
+        <div id="historyTableWrapper">
+            <table id="historyTable" class="table">
+                <thead>
+                <tr>
+                    <th>#Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Discount</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
+                <tbody id="historyTableBody">
+                </tbody>
+            </table>
+
+            <!-- empty-state shown when no rows match -->
+            <div id="historyEmpty" style="display:none;">
+                <i class="fa-solid fa-box-open fa-3x"></i>
+                <p>No orders found for the selected period.</p>
+            </div>
+        </div>
+
     </main>
 </section>
 
@@ -434,6 +498,7 @@
     import "./controller/CustomerController.js";
     import "./controller/ProductController.js";
     import "./controller/OrderController.js";
+    import "./controller/OrderHistoryController.js";
 </script>
 </body>
 </html>
