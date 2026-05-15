@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POS System</title>
-    <link rel="stylesheet" href="../POS_System/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -46,12 +46,23 @@
     </div>
 </section>
 
+<!-- ============================================================
+     MAIN NAV
+     ============================================================ -->
 <nav class="dashboardNav" id="mainNav" style="display:none;">
+
+    <!-- Hamburger — only visible on mobile via CSS -->
+    <button class="hamburgerBtn" id="hamburgerBtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <div class="navBrand">
         <div class="dashboardLogo"></div>
     </div>
 
-    <ul class="navLinks">
+    <ul class="navLinks" id="navLinks">
         <li><a href="#" class="navLink active" data-page="dashboard">Dashboard</a></li>
         <li><a href="#" class="navLink"         data-page="customers">Customers</a></li>
         <li><a href="#" class="navLink"         data-page="products">Products</a></li>
@@ -60,7 +71,11 @@
     </ul>
 
     <button class="button-87 btnLogOut" role="button">LOG OUT</button>
+
 </nav>
+
+<!-- Overlay (mobile nav backdrop) -->
+<div class="navOverlay" id="navOverlay"></div>
 
 <!-- ============================================================
      DASHBOARD SECTION
@@ -368,7 +383,7 @@
             </div>
         </div>
 
-        <!-- PANEL 3: SUMMARY + RECENT ORDERS TABLE -->
+        <!-- PANEL 3: SUMMARY -->
         <div id="orderSummaryPanel">
             <div class="orderPanelHeader">
                 <i class="fa-solid fa-file-invoice fa-lg" style="color:#ffcc00;"></i>
@@ -398,7 +413,6 @@
 <section id="historySection" class="page-section">
     <main id="historyMain">
 
-        <!-- ── PAGE HEADER ── -->
         <div id="historyHeader">
             <div id="historyTitleGroup">
                 <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
@@ -408,33 +422,25 @@
                 </div>
             </div>
 
-            <!-- ── FILTER BAR ── -->
             <div id="historyFilterBar">
-
                 <div class="historyFilterGroup">
                     <label for="historyDateFrom">From</label>
                     <input type="date" id="historyDateFrom" class="historyDateInput">
                 </div>
-
                 <span class="historyFilterSep">→</span>
-
                 <div class="historyFilterGroup">
                     <label for="historyDateTo">To</label>
                     <input type="date" id="historyDateTo" class="historyDateInput">
                 </div>
-
                 <button class="historyFilterBtn" id="btnHistoryFilter">
                     <i class="fa-solid fa-filter"></i> Apply
                 </button>
-
                 <button class="historyFilterBtn historyFilterBtnGhost" id="btnHistoryClear">
                     <i class="fa-solid fa-rotate-left"></i> Reset
                 </button>
-
             </div>
         </div>
 
-        <!-- ── SUMMARY CHIPS ── -->
         <div id="historyChips">
             <div class="historyChip">
                 <span class="chipVal" id="chipTotal">0</span>
@@ -454,7 +460,6 @@
             </div>
         </div>
 
-        <!-- ── TABLE WRAPPER ── -->
         <div id="historyTableWrapper">
             <table id="historyTable" class="table">
                 <thead>
@@ -473,7 +478,6 @@
                 </tbody>
             </table>
 
-            <!-- empty-state shown when no rows match -->
             <div id="historyEmpty" style="display:none;">
                 <i class="fa-solid fa-box-open fa-3x"></i>
                 <p>No orders found for the selected period.</p>
@@ -493,12 +497,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="module">
-    import "./controller/LoginController.js"
-    import "./controller/DashboardController.js";
-    import "./controller/CustomerController.js";
-    import "./controller/ProductController.js";
-    import "./controller/OrderController.js";
-    import "./controller/OrderHistoryController.js";
+    import "../controller/LoginController.js"
+    import "../controller/DashboardController.js";
+    import "../controller/CustomerController.js";
+    import "../controller/ProductController.js";
+    import "../controller/OrderController.js";
+    import "../controller/OrderHistoryController.js";
+    import "../controller/SidebarController.js";
 </script>
 </body>
 </html>
